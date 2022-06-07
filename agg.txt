@@ -1,0 +1,62 @@
+def accounting(n):
+  size = 1
+  cost = 0
+  bank = 0
+  print("Elements\tSize\tCost\tBank")
+  for i in range(1, n+1):
+    cost = 1
+    if i > size:
+      size *= 2
+      cost = i
+    bank += (3-cost)
+    print(i,"\t\t",size,"\t",cost,"\t",bank)
+
+
+def aggregate(n):
+  size = 1
+  cost = 0
+  total = 0
+  tc = []
+  print("Elements\tSize\tCost\tTotal Cost\tAggregate")
+  for i in range(1, n+1):
+    cost = 1
+    if i > size:
+      size *= 2
+      cost = i
+  
+    tc.append(cost)
+    for j in range(len(tc)):
+      total += tc[j]
+    agg = total/i
+    print(i,"\t\t",size,"\t",cost,"\t", total,"\t\t",agg)
+    total = 0
+
+def potential(n):
+  size = 1
+  cost = 0
+  phi = 0
+  prevphi = 0
+  print("Elements\tSize\tCost\tPhii\tPotential")
+  for i in range(1, n+1):
+    cost = 1
+    if i > size:
+      size *= 2
+      cost = i
+    phi = (2*i)-size
+    potential = cost+ phi - prevphi
+    prevphi = phi
+    print(i,"\t\t",size,"\t",cost,"\t",phi,"\t",potential)
+
+n = int(input("Enter the number of element in array: "))
+print()
+print("================Accounting Method=======================")
+accounting(n)
+print("========================================================")
+print()
+print("================Aggregate Method========================")
+aggregate(n)
+print("========================================================")
+print()
+print("================Potential Method========================")
+potential(n)
+print("========================================================")
